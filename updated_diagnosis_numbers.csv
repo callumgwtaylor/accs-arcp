@@ -1,0 +1,340 @@
+diagnosis_code,n,word
+Abdominal pain - Unspecified,81,
+No Injury or Abnormality Detected,54,
+"Chest pain, unspecified",41,
+Chest pain (non cardiac),37,
+Tendancy to fall,27,falls
+Syncope and collapse,22,
+Unspecified acute lower respiratory infection,18,breathlessness
+Unspecified acute lower respiratory infection,18,cyanosis
+Unspecified acute lower respiratory infection,18,cough
+Unspecified acute lower respiratory infection,18,septic
+Unspecified acute lower respiratory infection,18,fever
+Low back pain,15,
+Open wound of scalp,15,
+Headache,14,
+Sprain and strain of ankle,13,
+Superficial injury of scalp,13,
+Sprain and strain of neck,12,
+Deliberate self harm by sharp object,11,mental
+Sprain and strain of shoulder joint,11,
+"Urinary tract infection, site not specified",11,septic
+"Seizures - Grand mal, unspecified ",10,unconscious
+"Seizures - Grand mal, unspecified ",10,fits
+Acute Alcohol intoxication,9,
+Nausea and vomiting,9,oliguric
+"Stroke, not specified as haemorrhage or infarction",9,weakness
+Corneal abrasion of eye without foreign body,8,
+Gastroenteritis and diarrhoea of presumed infectious origin,8,
+Haematemesis,8,haematemisis
+"Other chronic obstructive pulmonary disease - Chronic obstructive pulmonary disease with acute exacerbation, unspecified",8,ventilatory
+"Other chronic obstructive pulmonary disease - Chronic obstructive pulmonary disease with acute exacerbation, unspecified",8,breathlessness
+"Other chronic obstructive pulmonary disease - Chronic obstructive pulmonary disease with acute exacerbation, unspecified",8,cough
+"Other chronic obstructive pulmonary disease - Chronic obstructive pulmonary disease with acute exacerbation, unspecified",8,cyanosis
+Epistaxis,7,
+Other Mood Disorder,7,mental
+"Transient cerebral ischaemic attack, unspecified",7,
+"Asthma, unspecified",6,ventilatory
+"Asthma, unspecified",6,breathlessness
+Open wound of hand,6,
+"Pneumonia, unspecified",6,breathlessness
+"Pneumonia, unspecified",6,cyanosis
+"Pneumonia, unspecified",6,fever
+"Pneumonia, unspecified",6,cough
+"Sprain and strain of knee, unspecified",6,
+Suicidal Ideation,6,mental
+"Chronic obstructive pulmonary disease, unspecified",5,breathlessness
+"Chronic obstructive pulmonary disease, unspecified",5,cough
+Dental abscess without sinus,5,
+"Fracture of distal radius, closed",5,
+Haemorrhage of anus and rectum,5,malaena
+Migraine,5,
+Acute Alcohol Withdrawal,4,disturbed
+Acute opiate intoxication,4,unconscious
+Anxiety State,4,mental
+Atrial fibrillation and flutter,4,
+Crushing injury of hand and wrist,4,
+"Fracture of neck of femur, closed",4,
+Haematuria - unspecified,4,
+"Osteoarthrisis of hip, unspecified",4,
+Other gastritis,4,
+Palpitations,4,
+Poisoning by Paracetamol,4,mental
+Poisoning by Paracetamol,4,jaundice
+Retention of urine,4,oliguric
+Sciatica,4,
+"Abnormal uterine and vaginal bleeding, unspecified",3,
+Achilles tendinitis,3,atraumatic
+"Acute pharyngitis, unspecified",3,throat
+Acute psychoactive substance Intoxication,3,
+"Acute psychosis, unspecified",3,mental
+Acute psychoactive substance Intoxication,3,disturbed
+"Acute psychosis, unspecified",3,disturbed
+Alcoholic gastritis,3,
+"Calculus of lower urinary tract, unspecified",3,
+Cellulitis of other parts of limb,3,atraumatic
+Cellulitis of other parts of limb,3,fever
+Cellulitis of other sites,3,septic
+Cellulitis of other sites,3,fever
+Cellulitis of other sites,3,rash
+Constipation,3,
+"Deliberate self poisoning by nonopioid analgesics, antipyretics and antirheumatics",3,mental
+"Deliberate self poisoning by unspecified drugs, medication and biological substances",3,mental
+"Disorientation and confusion, unspecified",3,mental
+Dyspnoea,3,breathlessness
+Focal / partial symptomatic epilepsy: simple partial seizures,3,fits
+"Fracture of proximal humerus, closed",3,trauma
+Open wound of finger(s) without damage to nail,3,
+Other and unspecified symptoms and signs involving the nervous and musculoskeletal systems,3,
+Pleurisy / Pleuritic chest pain,3,
+"Pyogenic arthritis, unspecified",3,fever
+Sebaceous cyst,3,
+Sprain and strain of wrist,3,
+"Accidental poisoning by antiepileptic, sedative, hypnotic, antiparkinsonism and psychotropic drugs",2,unconscious
+Achilles tendon injury including rupture,2,
+Acute Appendicitis With Localized Peritonitis,2,
+"Acute Confusional state, not due to drug or alcohol use",2,oliguric
+Acute subendocardial myocardial infarction,2,
+Alcohol Dependance,2,mental
+"Allergy, unspecified",2,anaphylaxis
+"Allergy, unspecified",2,rash
+Burn of wrist and hand - Partial thickness,2,
+"Bursitis of knee, Other",2,atraumatic
+"Cellulitis, unspecified",2,fever
+Cluster headache syndrome,2,
+"Conjunctivitis, unspecified",2,
+Contusion of elbow,2,
+Contusion of toe(s) with damage to nail,2,
+Contusion of wrist and hand,2,
+Corrosion of cornea and conjunctiva,2,
+Deep Venous thrombosis of legs,2,atraumatic
+Dizziness and giddiness,2,falls
+Dog Bite,2,
+Facial nerve disorders - Bell's palsy,2,
+"Fracture of femur - Intratrochanteric, closed",2,trauma
+"Fracture of other metacarpal bone, closed",2,
+"Gastritis, unspecified",2,
+Haemorrhage in early pregnancy - Threatened abortion,2,
+"Heart failure, unspecified",2,ventilatory
+"Heart failure, unspecified",2,cyanosis
+Injury of finger flexor muscle / tendon,2,
+Injury of quadriceps muscle and tendon,2,
+Injury of wrist and hand - unspecified,2,
+Localized oedema,2,
+Lower abdomen pain,2,
+Mechanical complication of urinary (indwelling) catheter,2,oliguric
+"Multiple fractures of femur, closed",2,trauma
+Open wound of thigh,2,
+"Other arthritis - Arthritis, unspecified",2,
+Other bacterial pneumonia,2,cyanosis
+Other bacterial pneumonia,2,septic
+Other bacterial pneumonia,2,breathlessness
+Other bacterial pneumonia,2,fever
+Other bacterial pneumonia,2,fever
+"Phimosis and paraphimosis, redundant prepuce",2,
+Pilonidal cyst with abscess,2,
+Poisoning by Benzodiazepines,2,
+Pulmonary embolism without signs of acute cor pulmonale,2,
+Rotator cuff tendon injury shoulder,2,
+Sprain and strain of acromioclavicular joint,2,
+Sprain and strain of foot,2,
+Superficial injury of foot,2,
+"Superficial injury of head, part unspecified",2,
+Superficial injury of lower leg - calf,2,
+Superficial injury of wrist,2,
+"Ulcer of lower limb, NEC",2,
+Unspecified injury of ankle and foot,2,
+Unspecified injury of hip and thigh,2,
+"Abdominal aortic aneurysm, ruptured",1,
+"Abscess, unspecified",1,fever
+Accidental poisoning by opiates and hallucinogens,1,unconscious
+Acquired deformity of finger(s) - including Mallet,1,
+"Acute gastritis, other",1,haematemisis
+Acute pancreatitis,1,fever
+Acute pharyngitis due to other specified organisms,1,throat
+Acute pharyngitis due to other specified organisms,1,fever
+Acute Pyelonephritis,1,fever
+Acute pharyngitis due to other specified organisms,1,septic
+Acute Pyelonephritis,1,septic
+Acute transmural myocardial infarction of anterior wall - ST Elevation,1,
+"Acute upper respiratory tract infection, unspecified",1,throat
+"Acute upper respiratory tract infection, unspecified",1,fever
+Alcohol Withdrawal Seizures,1,
+Anaphylactic shock,1,shocked
+Anaphylactic shock,1,anaphylaxis
+Angina pectoris - Unstable angina,1,
+Attention to surgical dressings and sutures,1,
+"Bacterial pneumonia, NEC - Bacterial pneumonia, unspecified",1,septic
+"Bacterial pneumonia, NEC - Bacterial pneumonia, unspecified",1,fever
+"Blindness, one eye, low vision other eye",1,
+"Bradycardia, unspecified",1,
+Bronchiectasis,1,
+Burn of head and neck - Superficial,1,
+Burn of unspecified degree of shoulder and upper limb,1,
+Burn of wrist and hand - Superficial,1,
+Calcific tendinitis of shoulder,1,atraumatic
+Cardiac arrest - Sudden cardiac death,1,ventilatory
+Cardiac arrest - Sudden cardiac death,1,unconscious
+"Cerebral infarction, unspecified",1,weakness
+Cholelithiasis - Calculus of gallbladder with acute cholecystitis,1,
+Cholelithiasis - Calculus of gallbladder without cholecystitis,1,
+Complicated migraine,1,weakness
+Congestive heart failure,1,ventilatory
+Congestive heart failure,1,breathlessness
+Contact With Hypodermic Needle In Other Institution,1,
+Contact With Hypodermic Needle In Trade/service Area,1,
+Contusion of chest wall,1,
+Contusion of finger(s) with damage to nail,1,
+Contusion of finger(s) without damage to nail,1,
+Contusion of knee,1,
+Contusion of lower back and pelvis,1,
+Contusion of lower leg,1,
+Contusion of thigh,1,
+Corrosion of mouth and pharynx,1,throat
+Crushing injury of knee,1,trauma
+Dehydration,1,oliguric
+Deliberate self poisoning by and exposure to other and unspecified chemicals and noxious substances,1,mental
+Deliberate self poisoning by and exposure to other drugs acting on the autonomic nervous system,1,mental
+"Deliberate self poisoning by antiepileptic, sedative, hypnotic, antiparkinsonism and psychotropic drugs",1,mental
+Deliberate self poisoning by opiates and hallucinogens,1,mental
+Dementia,1,mental
+Dentofacial anomalies [including malocclusion] - Anomalies of dental arch relationship,1,
+Difficulty in walking,1,falls
+Difficulty in walking,1,weakness
+Dislocation of shoulder joint,1,
+Dislocation of tooth,1,
+"Disorder of conjunctiva, unspecified",1,
+"Disorder of penis, unspecified",1,
+Disorders of trigeminal nerve - Atypical facial pain,1,
+Drug-induced dystonia,1,
+"Dysmenorrhoea, unspecified",1,
+Dysphagia,1,throat
+Dysphasia and aphasia,1,
+"Electrocution, Shock from electric current",1,
+Essential (primary) hypertension,1,
+"Excessive vomiting in pregnancy - Vomiting of pregnancy, unspecified",1,
+External haemorrhoids without complication,1,
+Flat foot [pes planus] (acquired),1,atraumatic
+"Foreign body in Upper airway, trachea",1,throat
+Foreign body on external eye - cornea,1,
+"Fracture of clavicle, closed",1,
+"Fracture of distal radius and ulna, closed",1,
+"Fracture of distal tibia, closed",1,
+"Fracture of facial, malar and maxillary bones, closed",1,
+"Fracture of finger, closed",1,
+"Fracture of finger, open",1,
+"Fracture of foot - metatarsal bone, closed",1,
+"Fracture of foot - talus, closed",1,
+"Fracture of great toe, closed",1,
+"Fracture of mandible, closed",1,
+"Fracture of nasal bones, closed",1,
+"Fracture of proximal radius, closed",1,
+"Fracture of proximal tibia, closed",1,
+"Fracture of proximal ulna, open",1,
+"Fracture of scaphoid, closed",1,
+"Fracture of shaft of femur, closed",1,trauma
+"Fracture of sternum, closed",1,trauma
+"Fracture of thoracic vertebra, closed",1,trauma
+"Fracture shaft of humerus, closed",1,trauma
+"Fracture shaft of radius, closed",1,
+Gastro-oesophageal reflux disease without oesophagitis,1,
+Generalized skin eruption due to drugs and medicaments,1,rash
+"Gout, unspecified",1,atraumatic
+Herpesviral [ herpes simplex ] infections - Herpesviral gingivostomatitis and pharyngotonsillitis,1,
+Hypnotic Withdrawal,1,
+Hypnotic Withdrawal - With seizures,1,fits
+"Hypoglycaemia, unspecified",1,unconscious
+"Inguinal hernia, unilateral, without obstruction or gangrene",1,
+Injury of extensor muscle / tendon of thumb,1,
+Injury of extensor muscle and tendon of finger(s),1,
+"Injury of eye and orbit, part unspecified",1,
+Injury of finger(s) extensor muscle / tendon at forearm level,1,
+Injury of thumb flexor muscle / tendon at forearm level,1,
+Insulin dependent diabetes mellitus with ketoacidosis,1,oliguric
+Insulin dependent diabetes mellitus with multiple complications,1,unconscious
+Internal thrombosed haemorrhoids,1,
+"Intestinal obstruction, unspecified",1,
+"Iron deficiency anaemia, unspecified",1,
+"Joint disorder, unspecified",1,atraumatic
+"Juvenile osteochondrosis of hip and pelvis, unspecified",1,atraumatic
+Lymphoid leukaemia - Chronic lymphocytic leukaemia,1,
+Malaise and fatigue,1,
+Malignant neoplasm of brain - Frontal lobe,1,
+Manic episode,1,disturbed
+Manic episode,1,mental
+Medial epicondylitis,1,
+Migraine with aura [classical migraine],1,
+Multiple injuries of head,1,trauma
+Non-insulin-dependent diabetes mellitus without complications,1,
+"Noninfective gastroenteritis and colitis, unspecified",1,
+Nonsuppurative otitis media - Acute serous otitis media,1,ears
+"Oedema, unspecified",1,
+Open wound of eyelid and periorbital area,1,
+"Open wound of face, chin or cheek",1,
+Open wound of finger(s) with damage to nail,1,
+Open wound of forearm,1,
+Open wound of nose,1,
+Open wound of penis,1,
+"Orchitis, epididymitis and epididymo-orchitis without abscess",1,
+"Osteoarthritis of knee, unspecified",1,atraumatic
+Osteoporosis of disuse without pathological fracture,1,
+Other and unspecified speech disturbances,1,
+Other and unspecified symptoms and signs involving cognitive functions and awareness,1,
+"Other complications of internal orthopaedic prosthetic devices, implants and grafts",1,
+Other corneal scars and opacities,1,
+Other diseases of lip and oral mucosa - Cheek and lip biting,1,
+Other diseases of lip and oral mucosa - Diseases of lips,1,
+"Other Muscle / tendon injury at wrist, hand level",1,
+"Other noninfective disorders of lymphatic vessels and lymph nodes - Lymphoedema, NEC",1,
+Other perforations of tympanic membrane,1,
+Other retinal detachments,1,
+Other specified abnormal uterine and vaginal bleeding,1,
+Other specified diseases of pancreas,1,
+Other specified disorders of cornea,1,
+Other specified injuries of head,1,
+Other specified injuries of lower leg,1,
+Other specified injuries of shoulder and upper arm,1,
+Other spontaneous disruption of ligament(s) of knee - Medial collateral ligament,1,
+Other testicular dysfunction,1,
+Other visual disturbances,1,
+"Otitis media, unspecified",1,ears
+Palliative care,1,jaundice
+Paraesthesia of skin,1,
+Parkinson's disease,1,
+Pelvic and perineal pain,1,
+"Pleural condition, unspecified",1,breathlessness
+"Pleural condition, unspecified",1,cough
+Pleural effusion in conditions classified elsewhere,1,cough
+Pleural effusion in conditions classified elsewhere,1,breathlessness
+Pneumonitis due to food and vomit,1,breathlessness
+Poisoning by Other opiates,1,mental
+Prepatellar bursitis,1,
+Primary osteoarthritis of hip,1,atraumatic
+"Purpura and other haemorrhagic conditions - Thrombocytopenia, unspecified",1,rash
+Renal colic - unspecified,1,
+Sequelae of unspecified injury of head,1,
+"Shock, unspecified",1,shocked
+"Shock, unspecified",1,oliguric
+"Spontaneous abortion. Incomplete, without complication",1,
+"Sprain and strain of collateral ligament of knee - medial, lateral",1,
+Sprain and strain of finger(s),1,
+Sprain and Strain of finger(s) and thumb,1,
+Sprain and strain of ribs and sternum,1,
+Sprain and strain of shoulder girdle - parts unspecified,1,
+Strange and inexplicable behaviour,1,mental
+Superficial injuries involving multiple regions of lower limb(s),1,
+Superficial injury of shoulder,1,
+Supervision of high-risk pregnancy - Supervision of other high-risk pregnancies,1,
+Supraventricular tachycardia,1,
+Symptoms and signs involving emotional state - Restlessness and agitation,1,
+Torsion of testis,1,
+Transient cerebral ischaemic attack - Amaurosis fugax,1,weakness
+Traumatic arthropathy,1,
+Traumatic subarachnoid haemorrhage,1,trauma
+Traumatic subdural haemorrhage,1,trauma
+Traumatic subarachnoid haemorrhage,1,unconscious
+Traumatic subdural haemorrhage,1,unconscious
+Umbilical hernia without obstruction or gangrene,1,
+Unspecified injury of shoulder and upper arm,1,
+"Viral pneumonia, Other",1,breathlessness
+Zoster [ herpes zoster ] - Zoster ocular disease,1,

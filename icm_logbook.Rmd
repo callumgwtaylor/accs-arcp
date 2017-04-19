@@ -1,0 +1,173 @@
+---
+title: "Intensive Care Medicine Patients and Procedures"
+author: "Callum Taylor"
+date: "17 April 2017"
+output: html_document
+---
+
+# Introduction
+
+This document has three main parts.
+
+This first part has two tables, listing where a review I made for intensive care (or arrest/peri-arrest call I led) fitted as an acute or core major presentation
+
+The second part has a single table, listing a proportion of the reviews and arrest/peri-arrest calls I attended in my 6 months of Intensive Care.
+
+The third part is also a single table, listing the majority of the procedures I performed during my 6 months of Intensive Care
+
+## Acute and Major Presentations
+
+```{r setup, include=FALSE, message=FALSE, error=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+procedures <- read_csv("logbook/CT2_ICM/Procedures.csv")
+colnames(procedures)[1] <- "date"
+procedures <- procedures %>%
+  rename(procedure = Procedure, supervision = Supervision, sex=Gender, site=Site, uss = Ultrasound, vessel=Access)
+
+procedures$date <- as.POSIXct(procedures$date)
+procedures$procedure <- as.factor(procedures$procedure)
+procedures$supervision <- as.factor(procedures$supervision)
+
+reviews <- read_csv("logbook/CT2_ICM/Admissions.csv")
+colnames(reviews)[1] <- "date"
+reviews$Problem <- str_to_lower(reviews$Problem)
+
+arrest_count <- str_sub(reviews$Problem, 1, 6)
+arrest_count <- arrest_count == "arrest"
+arrest_count <- sum(arrest_count, na.rm = TRUE)
+
+# this imports all presentation codes for acute and major presentations
+acute_presentation_codes <- tibble(
+  title = c("Abdominal pain including loin pain",
+            "Abdominal swelling mass and constipation",
+            "Acute Back Pain",
+            "Aggressive/Disturbed Behaviour",
+            "Blackout/Collapse",
+            "Breathlessness",
+            "Chest Pain",
+            "Confusion/Acute Delirium",
+            "Cough",
+            "Cyanosis",
+            "Diarrhoea",
+            "Dizziness and Vertigo",
+            "Falls",
+            "Fever",
+            "Fits/Seizure",
+            "Haematemisis/Malaena",
+            "Headache",
+            "Head Injury",
+            "Jaundice",
+            "Limb Pain (Atraumatic)",
+            "Neck Pain",
+            "Oliguric patient",
+            "Pain Management",
+            "Painful ears",
+            "Palpitations",
+            "Pelvic Pain",
+            "Poisoning",
+            "Rash",
+            "Red Eye",
+            "Mental Health",
+            "Sore Throat",
+            "Syncope/Presyncope",
+            "Traumatic limb and joint injuries",
+            "Vaginal Bleeding",
+            "Ventilatory Support",
+            "Vomiting and Nausea",
+            "Weakness and paralysis", 
+            "Wound assessment and management"
+            ),
+  category = c("AP"),
+  code = 1:38,
+  value = str_c(category, code)
+)
+
+major_presentation_codes <- tibble(
+  title = c("Anaphylaxis",
+            "Cardio-respiratory arrest",
+            "Major Trauma",
+            "Septic patient",
+            "Shocked patient",
+            "Unconscious patient"
+            ),
+  category = c("CMP"),
+  code = 1:6,
+  value = str_c(category, code)
+)
+
+presentation_codes <- bind_rows(acute_presentation_codes, major_presentation_codes) %>%
+  unite(presentation_code, category, code) %>%
+  mutate(code_number = 1:44)
+```
+
+```{r presentations, echo=FALSE, include=FALSE}
+review_table <- reviews %>%
+  filter(Role == "Reviewed") %>%
+  select(Problem, Notes) %>%
+  arrange(Problem) %>%
+  rename(Codes = Notes)
+
+
+codes <- review_table$Codes
+codes <- str_split(codes, boundary("word"))
+codes <- as_vector(codes)
+codes <- as_tibble(codes)
+codes$pres <- str_extract(codes$value, "[aA-zZ]+")
+codes$num <- as.numeric(str_extract(codes$value, "[0-9]+"))
+
+core_presentations <- codes %>%
+  filter(pres == "CMP") %>%
+  group_by(value, pres, num) %>%
+  mutate(count = n()) %>%
+  left_join(presentation_codes, by ="value") %>%
+  select(code_number, presentation_code, title, num, count) %>%
+  group_by(code_number, presentation_code, title, num, count) %>%
+  distinct() %>%
+  arrange(code_number) %>%
+  ungroup() %>%
+  select(presentation_code, title, count) %>%
+  rename(`Number of Patients` = count)
+
+
+acute_presentations <- codes %>%
+  filter(pres == "AP") %>%
+  group_by(value, pres, num) %>%
+  mutate(count = n()) %>%
+  left_join(presentation_codes, by ="value") %>%
+  select(code_number, presentation_code, title, num, count) %>%
+  group_by(code_number, presentation_code, title, num, count) %>%
+  distinct() %>%
+  arrange(code_number) %>%
+  ungroup() %>%
+  select(presentation_code, title, count) %>%
+  rename(`Number of Patients` = count)
+```
+
+`r knitr::kable(core_presentations,caption="Core Major Presentations Covered By ICU Reviews", align = "l")`
+
+
+`r knitr::kable(acute_presentations,caption="Acute Presentations Covered By ICU Reviews", align = "l")`
+
+
+## Patient Reviews
+
+```{r reviews, echo=FALSE}
+knitr::kable(review_table,caption="ICU referrals/Peri arrest Calls reviewed during ICM")
+```
+
+## Procedures
+
+```{r procedure_table, echo=FALSE}
+table <- procedures %>%
+  group_by(procedure) %>%
+  count() %>%
+  filter(procedure != "Peripheral venous access")
+table$n[table$procedure == "Advanced Life Support (CPR)"] <- table$n[table$procedure == "Advanced Life Support (CPR)"] + arrest_count
+```
+
+```{r table, echo=FALSE}
+knitr::kable(table,caption="Procedures performed during ICM")
+```
+

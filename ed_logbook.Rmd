@@ -1,0 +1,249 @@
+---
+title: "Emergency Department Patients"
+author: "Callum Taylor"
+date: "18 April 2017"
+output: html_document
+---
+
+# Introduction
+
+This document has two main parts.
+
+This first part has a series of tables, one for each of the acute presentations and core presentations required for ACCS. Each table shows the relevant diagnoses for the presentation, with the amount of times I treated that diagnosis in the Emergency Medicine six month rotation.
+
+The second part has a single table, with every diagnosis I made in the Emergency Medicine rotation, listed in order of frequency.
+
+## Acute and Major Presentations
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidytext)
+library(readxl)
+library(stringr)
+library(knitr)
+
+# This imports all ED patients seen, and depersonalises their information
+ed_logbook <- read_excel("patient_data/ED_Reviews.xls", col_names = TRUE) %>%
+  select(-CHI, -Surname, -Forename)
+
+# this imports all presentation codes for acute and major presentations
+acute_presentation_codes <- tibble(
+  title = c("Abdominal pain including loin pain",
+            "Abdominal swelling mass and constipation",
+            "Acute Back Pain",
+            "Aggressive/Disturbed Behaviour",
+            "Blackout/Collapse",
+            "Breathlessness",
+            "Chest Pain",
+            "Confusion/Acute Delirium",
+            "Cough",
+            "Cyanosis",
+            "Diarrhoea",
+            "Dizziness and Vertigo",
+            "Falls",
+            "Fever",
+            "Fits/Seizure",
+            "Haematemisis/Malaena",
+            "Headache",
+            "Head Injury",
+            "Jaundice",
+            "Limb Pain (Atraumatic)",
+            "Neck Pain",
+            "Oliguric patient",
+            "Pain Management",
+            "Painful ears",
+            "Palpitations",
+            "Pelvic Pain",
+            "Poisoning",
+            "Rash",
+            "Red Eye",
+            "Mental Health",
+            "Sore Throat",
+            "Syncope/Presyncope",
+            "Traumatic limb and joint injuries",
+            "Vaginal Bleeding",
+            "Ventilatory Support",
+            "Vomiting and Nausea",
+            "Weakness and paralysis", 
+            "Wound assessment and management"
+            ),
+  category = c("AP"),
+  code = 1:38
+)
+
+major_presentation_codes <- tibble(
+  title = c("Anaphylaxis",
+            "Cardio-respiratory arrest",
+            "Major Trauma",
+            "Septic patient",
+            "Shocked patient",
+            "Unconscious patient"
+            ),
+  category = c("CP"),
+  code = 1:6
+)
+
+presentation_codes <- bind_rows(acute_presentation_codes, major_presentation_codes) %>%
+  unite(presentation_code, category, code) %>%
+  mutate(code_number = 1:44)
+
+
+# this creates a list of words to get rid of from the presentation codes
+filter_presentation <- tibble(
+  word = c("patient", "including", "acute", "limb", "patient", "management", "red", "support", "assessment", "major", "injury", "traumatic", "respiratory")
+)
+
+altered_stop_words <- stop_words %>%
+  filter(word != "back")
+
+# this gives a list of all presentation codes
+presentation_codes <- presentation_codes %>%
+  group_by(presentation_code) %>%
+  mutate(presentation_title = title) %>%
+  unnest_tokens(word, title) %>%
+  anti_join(altered_stop_words) %>%
+  anti_join(filter_presentation)
+
+
+# this gives a table listing all diagnoses made and their frequency of occurence
+case_diagnoses <- ed_logbook %>%
+  select(diagnosis = `Diagnosis Code`) %>%
+  group_by(diagnosis) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  filter(!is.na(diagnosis)) %>%
+  mutate(diagnosis_code = diagnosis) %>%
+  unnest_tokens(word, diagnosis) %>%
+  anti_join(altered_stop_words) %>%
+  distinct() %>%
+  arrange(diagnosis_code)
+
+# join all words
+
+## this section connects cases and presentations by key words
+## it then filters out pain management (pain and management both being words usually filtered out)
+## it then removes pain from the rest of the words
+## and puts pain management back in
+
+all_joined <- presentation_codes %>%
+  full_join(case_diagnoses, by="word")
+
+pain_management <- all_joined %>%
+  filter(presentation_code == "AP_23")
+
+all_joined <- all_joined %>%
+  filter(word != "pain") %>%
+  bind_rows(pain_management)
+
+presentations_with_diagnoses <- all_joined %>%
+  filter(!is.na(diagnosis_code)) %>%
+  filter(!is.na(presentation_title)) %>%
+  select(-word)
+
+presentations_table <- presentations_with_diagnoses %>%
+  group_by(presentation_code, diagnosis_code) %>%
+  distinct() %>%
+  left_join(presentations_with_diagnoses, by = c("diagnosis_code", "presentation_code")) %>%
+  select(code_number, presentation_code, presentation_title, diagnosis_code, n)
+
+```
+
+```{r remainder, include = FALSE, echo=FALSE}
+
+# This section works out which acute/major presentations don't have a diagnosis
+presentations_without_diagnoses <- all_joined %>%
+  filter(is.na(diagnosis_code)) %>%
+  filter(!is.na(presentation_title)) %>%
+  select(presentation_code, presentation_title, code_number) %>%
+  anti_join(presentations_with_diagnoses) %>%
+  group_by(presentation_code, presentation_title, code_number) %>%
+  distinct() %>%
+  arrange(code_number)
+
+# Then we take case diagnoses, including their number and their name, to export to edit
+# When editing them we'll link diagnoses to the missing presentations, so every presentation has a valid diagnosis
+
+diagnosis_numbers <- case_diagnoses %>%
+  select(diagnosis_code, n) %>%
+  group_by(diagnosis_code, n) %>%
+  distinct() %>%
+  arrange(diagnosis_code) %>%
+  write_csv("diagnosis_numbers.csv")
+
+
+# now what we'll want to do, is import our updated diagnoses back in
+# then join them to case_diagnosis,
+# then replay all_joined,
+# then rebuild presentations_table
+
+updated_diagnoses <- read_csv("updated_diagnosis_numbers.csv", col_names = TRUE)
+case_diagnoses <- bind_rows(case_diagnoses, updated_diagnoses) %>%
+  filter(!is.na(word))
+
+
+all_joined <- presentation_codes %>%
+  full_join(case_diagnoses, by="word")
+
+pain_management <- all_joined %>%
+  filter(presentation_code == "AP_23")
+
+all_joined <- all_joined %>%
+  filter(word != "pain") %>%
+  bind_rows(pain_management)
+
+presentations_with_diagnoses <- all_joined %>%
+  filter(!is.na(diagnosis_code)) %>%
+  filter(!is.na(presentation_title)) %>%
+  select(-word)
+
+presentations_table <- presentations_with_diagnoses %>%
+  group_by(presentation_code, diagnosis_code) %>%
+  distinct() %>%
+  left_join(presentations_with_diagnoses, by = c("diagnosis_code", "presentation_code")) %>%
+  select(code_number, presentation_code, presentation_title, diagnosis_code, n)
+
+
+```
+
+
+```{r tables, echo=FALSE, results='asis'}
+for (i in 1:44){
+  table_plot <- presentations_table %>%
+    filter(code_number == i) %>%
+    select(presentation_code, Diagnosis = diagnosis_code, `Number of patients` = n) %>%
+    group_by(presentation_code, Diagnosis, `Number of patients`) %>%
+    arrange(desc(`Number of patients`)) %>%
+    distinct()
+  
+  count_caption <- table_plot %>%
+    ungroup() %>%
+    select(`Number of patients`) %>%
+    sum() %>%
+    as.character()
+  
+   name_caption <- presentations_table %>%
+     filter(code_number == i) %>%
+     ungroup() %>%
+     select(presentation_title) %>%
+     distinct %>%
+     as.character()
+   
+   table_caption <- str_c(name_caption, ". Number of patients seen: ", count_caption)
+  
+  print(kable(table_plot, caption = table_caption))
+}
+
+```
+
+## All diagnoses
+
+
+```{r diagnoses, echo=FALSE, results='asis'}
+diagnosis_numbers <- diagnosis_numbers %>%
+  select(diagnosis = diagnosis_code, number = n) %>%
+  group_by(diagnosis, number) %>%
+  arrange(desc(number), diagnosis)
+
+kable(diagnosis_numbers, caption = "All diagnoses made in the six month period")
+```
